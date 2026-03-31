@@ -26,8 +26,8 @@ load_dotenv()
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 FEISHU_WEBHOOK   = os.environ["FEISHU_WEBHOOK"]
 DB_PATH          = "newsletter.db"
-LOOKBACK_HOURS   = 24          # 抓取过去多少小时的内容
-PUSH_HOUR        = 9           # 每天推送时间（24小时制）
+LOOKBACK_HOURS   = 12          # 抓取过去多少小时的内容
+PUSH_HOURS       = [9, 21]     # 每天推送时间（24小时制），可添加多个
 MAX_ITEMS_PER_SECTION = 5      # 每板块最多展示条数
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -301,6 +301,8 @@ def ai_summarize(items: list[dict]) -> dict:
                 l for l in lines
                 if not l.strip().startswith("```")
             )
+        # 替换中文弯引号为直引号，避免 JSON 解析失败
+        text = text.replace('"', '"').replace('"', '"').replace("'", "'").replace("'", "'")
         start = text.find("{")
         end   = text.rfind("}") + 1
         return json.loads(text[start:end])
@@ -452,8 +454,9 @@ def run_once():
 
 def run_scheduler():
     """定时任务模式"""
-    log.info(f"调度模式启动，每天 {PUSH_HOUR}:00 推送")
-    schedule.every().day.at(f"{PUSH_HOUR:02d}:00").do(run_once)
+    log.info(f"调度模式启动，每天 {PUSH_HOURS} 推送")
+    for h in PUSH_HOURS:
+        schedule.every().day.at(f"{h:02d}:00").do(run_once)
     while True:
         schedule.run_pending()
         time.sleep(60)
