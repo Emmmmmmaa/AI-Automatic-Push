@@ -1,6 +1,4 @@
-# AI 资讯推送机器人 · 部署指南
-
-## 快速开始
+# AI 资讯推送机器人
 
 ### 1. 安装依赖
 ```bash
@@ -9,8 +7,8 @@ pip install -r requirements.txt
 
 ### 2. 填写配置（main.py 顶部）
 ```python
-ANTHROPIC_API_KEY = "sk-ant-..."   # 你的 Anthropic API Key
-FEISHU_WEBHOOK    = "https://open.feishu.cn/open-apis/bot/v2/hook/..."
+ANTHROPIC_API_KEY = "sk-ant-..."   # Anthropic API Key
+FEISHU_WEBHOOK    = "https://open.feishu.cn/open-apis/bot/v2/hook/..." # feishu bot webhook
 ```
 
 ### 3. 立即测试
@@ -25,7 +23,7 @@ python main.py
 
 ---
 
-## 生产部署方案（推荐）
+<!-- ## 生产部署方案（推荐）
 
 ### 方案A：Linux 服务器 + cron
 ```bash
@@ -76,7 +74,7 @@ jobs:
 | `PUSH_HOUR` | 9 | 定时推送小时（24小时制）|
 | `MAX_ITEMS_PER_SECTION` | 5 | 每板块展示最多N条 |
 
----
+--- -->
 
 ## 内容板块对应
 
@@ -89,7 +87,7 @@ jobs:
 | 💡 高质量观点 | Karpathy、Sam Altman、Lilian Weng、Simon Willison等 |
 
 ---
-
+<!-- 
 ## 扩展开发
 
 ### 添加新的RSS源
@@ -123,4 +121,4 @@ data = yf.download(tickers, period="1d")
 | 服务器（VPS最低配）| ~$5/月 |
 | GitHub Actions | 免费（2000分钟/月）|
 
-每月总费用约 **$6.5** 即可运行。
+每月总费用约 **$6.5** 即可运行。 -->
