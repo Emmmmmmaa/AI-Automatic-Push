@@ -1,0 +1,75 @@
+﻿名称,URL,语言,分类,类型,是否有RSS,备注
+机器之心,https://www.jiqizhixin.com/rss,zh,tech,中文技术媒体,是,
+量子位,https://www.qbitai.com/feed,zh,tech,中文技术媒体,是,
+新智元,https://www.xinzhi.com/rss,zh,tech,中文技术媒体,是,
+36氪,https://36kr.com/feed,zh,biz,中文技术媒体,是,
+钛媒体,https://www.tmtpost.com/feed,zh,biz,中文技术媒体,是,
+TechCrunch,https://techcrunch.com/feed/,en,biz,英文技术媒体,是,
+TechCrunch Venture,https://techcrunch.com/category/venture/feed/,en,funding,英文技术媒体,是,
+VentureBeat,https://venturebeat.com/feed/,en,tech,英文技术媒体,是,
+Wired AI,https://www.wired.com/feed/tag/artificial-intelligence/rss,en,tech,英文技术媒体,是,
+Ars Technica AI,https://feeds.arstechnica.com/arstechnica/index,en,tech,英文技术媒体,是,
+The Information,https://www.theinformation.com/feed,en,biz,英文技术媒体,是,付费墙内容有限
+OpenAI Blog,https://openai.com/news/rss.xml,en,model,AI公司官方博客,是,
+Google DeepMind,https://deepmind.google/blog/rss.xml,en,model,AI公司官方博客,是,
+Anthropic Blog,https://www.anthropic.com/news/rss,en,model,AI公司官方博客,是,
+Microsoft AI,https://blogs.microsoft.com/ai/feed/,en,model,AI公司官方博客,是,
+Hugging Face,https://huggingface.co/blog/feed.xml,en,model,AI公司官方博客,是,
+Google AI Blog,https://blog.google/technology/ai/rss/,en,model,AI公司官方博客,是,
+Meta AI Blog,https://ai.meta.com/blog/rss/,en,model,AI公司官方博客,是,
+xAI Blog,https://x.ai/blog/rss.xml,en,model,AI公司官方博客,是,
+Mistral Blog,https://mistral.ai/news/rss,en,model,AI公司官方博客,是,
+arXiv cs.AI,https://rss.arxiv.org/rss/cs.AI,en,research,学术,是,
+arXiv cs.LG,https://rss.arxiv.org/rss/cs.LG,en,research,学术,是,
+arXiv cs.CV,https://rss.arxiv.org/rss/cs.CV,en,research,学术,是,
+arXiv cs.GR,https://rss.arxiv.org/rss/cs.GR,en,research,学术,是,图形学/3D生成
+YC Blog,https://www.ycombinator.com/blog/rss,en,funding,创投,是,
+a16z Blog,https://a16z.com/feed/,en,funding,创投,是,
+Sequoia Blog,https://www.sequoiacap.com/blog/rss.xml,en,funding,创投,是,
+Crunchbase News,https://news.crunchbase.com/feed/,en,funding,创投,是,
+Reuters Tech,https://feeds.reuters.com/reuters/technologyNews,en,public_market,财经媒体,是,
+Bloomberg Tech,https://feeds.bloomberg.com/technology/news.rss,en,public_market,财经媒体,是,
+Seeking Alpha AI,https://seekingalpha.com/tag/artificial-intelligence.xml,en,public_market,财经媒体,是,
+Adobe Blog,https://blog.adobe.com/en/feed,en,creative,创意设计工具官方,是,
+Figma Blog,https://www.figma.com/blog/rss/,en,creative,创意设计工具官方,是,
+Canva Newsroom,https://www.canva.com/newsroom/rss.xml,en,creative,创意设计工具官方,是,
+Midjourney Blog,https://midjourney.com/blog/rss,en,creative,创意设计工具官方,是,
+Runway Blog,https://runwayml.com/blog/rss,en,creative,创意设计工具官方,是,
+Luma AI Blog,https://lumalabs.ai/blog/rss,en,creative,创意设计工具官方,是,
+Simon Willison,https://simonwillison.net/atom/entries/,en,opinion,核心人物博客,是,
+Lilian Weng,https://lilianweng.github.io/index.xml,en,opinion,核心人物博客,是,
+Greg Brockman,https://blog.gregbrockman.com/feed,en,opinion,核心人物博客,是,
+Wojciech Zaremba,https://medium.com/@woj.zaremba/feed,en,opinion,核心人物博客,是,
+Stefan Pieterse,https://steipete.me/rss.xml,en,opinion,核心人物博客,是,
+Lex Fridman Podcast,https://lexfridman.com/feed/podcast/,en,opinion,播客,是,代码误放入SCRAPE_SOURCES
+Dwarkesh Podcast,https://www.dwarkeshpatel.com/feed,en,opinion,播客,是,代码误放入SCRAPE_SOURCES
+Lenny's Podcast,https://www.lennysnewsletter.com/feed,en,opinion,播客,是,代码误放入SCRAPE_SOURCES
+Latent Space Podcast,https://www.latent.space/feed,en,opinion,播客,是,代码误放入SCRAPE_SOURCES
+Karpathy Blog,https://karpathy.ai,en,opinion,核心人物博客,否,需爬取
+Sam Altman Blog,https://blog.samaltman.com,en,opinion,核心人物博客,否,需爬取
+Dario Amodei Blog,https://www.darioamodei.com,en,opinion,核心人物博客,否,需爬取
+Colah Blog,https://colah.github.io,en,opinion,核心人物博客,否,需爬取
+Francois Chollet,https://fchollet.com,en,opinion,核心人物博客,否,需爬取
+Mustafa Suleyman,https://mustafa-suleyman.ai,en,opinion,核心人物博客,否,需爬取
+Karina Nguyen,https://karinanguyen.com,en,opinion,核心人物博客,否,需爬取
+HN Buzzing,https://hn.buzzing.cc,en,opinion,聚合平台,否,需爬取
+AI Hub Today,https://ai.hubtoday.app,en,opinion,聚合平台,否,需爬取
+Higgsfield,https://higgsfield.ai/blog,en,creative,AI创意工具,否,需爬取
+Krea,https://www.krea.ai/blog,en,creative,AI创意工具,否,需爬取
+Recraft,https://www.recraft.ai/blog,en,creative,AI创意工具,否,需爬取
+Fal.ai Blog,https://blog.fal.ai,en,creative,AI创意工具,否,需爬取
+即梦,https://jimeng.jianying.com,zh,creative,AI创意工具,否,需爬取
+HeyGen Blog,https://www.heygen.com/blog,en,creative,AI创意工具,否,需爬取
+ElevenLabs Blog,https://elevenlabs.io/blog,en,creative,AI创意工具,否,需爬取
+Pika Blog,https://pika.art/blog,en,creative,AI创意工具,否,需爬取
+Ideogram Blog,https://ideogram.ai/blog,en,creative,AI创意工具,否,需爬取
+Suno Blog,https://suno.com/blog,en,creative,AI创意工具,否,需爬取
+Meshy Blog,https://www.meshy.ai/blog,en,creative,AI创意工具,否,需爬取
+Character.AI Blog,https://blog.character.ai,en,social,AI社交娱乐,否,需爬取
+Replika Blog,https://replika.com/blog,en,social,AI社交娱乐,否,需爬取
+DeepSeek Blog,https://www.deepseek.com/news,zh,model,中文AI公司,否,需爬取
+阶跃星辰,https://www.stepfun.com/news,zh,model,中文AI公司,否,需爬取
+智谱AI Blog,https://www.zhipuai.cn/news,zh,model,中文AI公司,否,需爬取
+MiniMax Blog,https://www.minimaxi.com/news,zh,model,中文AI公司,否,需爬取
+Moonshot Kimi,https://www.moonshot.cn/news,zh,model,中文AI公司,否,需爬取
+Founder Park,https://founderpark.net,zh,opinion,创业社区,否,需爬取

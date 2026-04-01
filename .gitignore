@@ -2,3 +2,7 @@
 newsletter.db
 __pycache__/
 *.pyc
+logs/
+test_twitter.py
+debug_items.json
+

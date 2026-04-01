@@ -19,8 +19,19 @@ python main.py --now
 ### 4. 定时运行（每天 9:00 自动推送）
 ```bash
 python main.py
+
+#后台运行
+nohup python3 main.py > push.log 2>&1 &
 ```
 
+### 5. 单个数据源测试
+```bash
+# RSS（默认）
+python main.py --test https://openai.com/news/rss.xml
+
+# 网页爬取
+python main.py --test https://karpathy.ai --scrape
+```
 ---
 
 <!-- ## 生产部署方案（推荐）
@@ -70,8 +81,8 @@ jobs:
 
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
-| `LOOKBACK_HOURS` | 24 | 抓取过去N小时的内容 |
-| `PUSH_HOUR` | 9 | 定时推送小时（24小时制）|
+| `LOOKBACK_HOURS` | 12 | 抓取过去N小时的内容 |
+| `PUSH_HOUR` | 9 | 定时推送小时 |
 | `MAX_ITEMS_PER_SECTION` | 5 | 每板块展示最多N条 |
 
 --- -->
@@ -80,11 +91,13 @@ jobs:
 
 | 板块 | 信源类型 |
 |------|---------|
-| 🤖 模型更新 | OpenAI/DeepMind/Anthropic博客、arXiv、HuggingFace |
-| 🛠 应用层追踪 | TechCrunch、VentureBeat、机器之心、量子位 |
-| 💰 融资动态 | TechCrunch Venture、YC Blog、36氪 |
-| 📈 二级市场 | Fortune（需扩展）|
-| 💡 高质量观点 | Karpathy、Sam Altman、Lilian Weng、Simon Willison等 |
+| 🤖 模型更新 | OpenAI/Anthropic/DeepMind/xAI/Mistral博客、Qwen、Seed、Black Forest Labs等模型官方网站 |
+| 🔬 研究前沿 | arXiv (cs.AI/LG/CV/GR)、OpenAI Research、Anthropic Research、Thinking Machines Lab |
+| 💼 应用层追踪 | Higgsfield、Krea、Recraft、Fal、Pika、Suno、Meshy、Manus、Character.AI、Talkie等 |
+| 📰 媒体 | 机器之心、量子位、TechCrunch、VentureBeat、Wired、GitHub Trending等 |
+| 💰 一级市场 | YC Blog、a16z、Sequoia、Crunchbase、TechCrunch Venture |
+| 📈 二级市场 | 实时股价表格（Google、Meta、NVIDIA、MSFT、Adobe），含估值/财务/指引 |
+| 💡 高质量观点 | Karpathy、Lilian Weng、Simon Willison、Sam Altman、Lex Fridman、Dwarkesh等 |
 
 ---
 <!-- 
