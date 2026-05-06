@@ -6,17 +6,22 @@ import logging
 log = logging.getLogger(__name__)
 
 STOCK_WATCHLIST = [
-    {"name": "Google", "ticker": "GOOGL", "currency": "USD"},
-    {"name": "Meta",   "ticker": "META",  "currency": "USD"},
-    {"name": "NVIDIA", "ticker": "NVDA",  "currency": "USD"},
-    {"name": "MSFT",   "ticker": "MSFT",  "currency": "USD"},
-    {"name": "Adobe",  "ticker": "ADBE",  "currency": "USD"},
+    {"name": "Google",  "ticker": "GOOGL",   "currency": "USD"},
+    {"name": "Meta",    "ticker": "META",    "currency": "USD"},
+    {"name": "NVIDIA",  "ticker": "NVDA",    "currency": "USD"},
+    {"name": "MSFT",    "ticker": "MSFT",    "currency": "USD"},
+    {"name": "Adobe",   "ticker": "ADBE",    "currency": "USD"},
     # Figma: not publicly listed
+    # HK-listed AI / tech companies
+    {"name": "MiniMax", "ticker": "0100.HK", "currency": "HKD"},
+    {"name": "智谱AI",  "ticker": "2513.HK", "currency": "HKD"},
+    {"name": "美图",    "ticker": "1357.HK", "currency": "HKD"},
+    {"name": "群核科技","ticker": "0068.HK", "currency": "HKD"},
 ]
 
 
 def _fmt_num(v, currency: str) -> str:
-    if v is None:
+    if v is None or not isinstance(v, (int, float)):
         return "—"
     if currency == "USD":
         if abs(v) >= 1e12:
@@ -24,26 +29,26 @@ def _fmt_num(v, currency: str) -> str:
         if abs(v) >= 1e9:
             return f"${v/1e9:.1f}B"
         return f"${v/1e6:.0f}M"
-    else:
+    if currency == "HKD":
         if abs(v) >= 1e8:
             return f"HK${v/1e8:.0f}亿"
         return f"HK${v/1e6:.0f}M"
 
 
 def _pct(v) -> str:
-    if v is None:
+    if v is None or not isinstance(v, (int, float)):
         return "—"
     return f"{v*100:.1f}%"
 
 
 def _ratio(v) -> str:
-    if v is None:
+    if v is None or not isinstance(v, (int, float)):
         return "—"
     return f"{v:.1f}x"
 
 
 def _arrow(v) -> str:
-    if v is None:
+    if v is None or not isinstance(v, (int, float)):
         return "—"
     sign = "▲" if v >= 0 else "▼"
     return f"{sign} {abs(v)*100:.1f}%"

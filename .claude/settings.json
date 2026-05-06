@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(jobs -l)"
+      "Bash(jobs -l)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 push_stock.py)",
+      "Read(//opt/miniconda3/envs/lovart-feishu-push/bin/**)",
+      "Bash(/opt/miniconda3/envs/lovart-feishu-push/bin/python3 -c \"import yfinance, requests, dotenv; print\\('deps OK'\\)\")",
+      "Bash(launchctl unload *)",
+      "Bash(systemsetup -gettimezone)",
+      "Bash(python3 push_market.py)"
     ]
   }
 }

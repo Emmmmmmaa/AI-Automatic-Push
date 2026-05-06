@@ -39,18 +39,23 @@ def get_tenant_token() -> str:
     return token
 
 
-def _insert_record(token: str, fields: dict) -> bool:
+BATCH_SIZE = 500
+
+
+def _batch_insert(token: str, records: list[dict]) -> int:
+    if not records:
+        return 0
     resp = requests.post(
-        f"https://open.feishu.cn/open-apis/bitable/v1/apps/{APP_TOKEN}/tables/{TABLE_ID}/records",
+        f"https://open.feishu.cn/open-apis/bitable/v1/apps/{APP_TOKEN}/tables/{TABLE_ID}/records/batch_create",
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-        json={"fields": fields},
-        timeout=10,
+        json={"records": [{"fields": r} for r in records]},
+        timeout=30,
     )
     data = resp.json()
     if data.get("code") == 0:
-        return True
-    log.warning(f"Bitable insert failed: {data}")
-    return False
+        return len(records)
+    log.warning(f"Bitable batch insert failed: {data}")
+    return 0
 
 
 def write_items_to_bitable(items: list[dict]) -> int:
@@ -64,30 +69,32 @@ def write_items_to_bitable(items: list[dict]) -> int:
         log.error(f"Bitable: cannot get token: {e}")
         return 0
 
-    success = 0
+    year = datetime.now().year
+    records = []
     for item in items:
         pub_time_ms = None
         pub_time_str = item.get("pub_time", "")
         if pub_time_str and pub_time_str != "nan":
             try:
-                year = datetime.now().year
                 dt = datetime.strptime(f"{year}-{pub_time_str}", "%Y-%m-%d %H:%M")
                 pub_time_ms = int(dt.timestamp() * 1000)
             except Exception:
                 pass
 
-        fields = {
+        records.append({
             "title":       item.get("title", ""),
             "url":         item.get("url", ""),
             "summary":     item.get("summary", ""),
             "source":      item.get("source", ""),
-            "category":    item.get("category", ""),
+            "category_hardcode": item.get("category_hardcode", ""),
             "pub_time":    pub_time_ms,
             "source_type": item.get("source_type", ""),
-        }
-        if _insert_record(token, fields):
-            success += 1
-        time.sleep(0.05)  # stay well within 50 req/s limit
+            "push_time":   int(datetime.now().timestamp() * 1000),
+        })
+
+    success = 0
+    for i in range(0, len(records), BATCH_SIZE):
+        success += _batch_insert(token, records[i:i + BATCH_SIZE])
 
     log.info(f"Bitable: wrote {success}/{len(items)} records")
     return success

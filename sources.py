@@ -1,8 +1,6 @@
 RSS_SOURCES = [
     # [media] 中文技术媒体
-    {"name": "机器之心",   "url": "https://www.jiqizhixin.com/rss",          "lang": "zh", "category": "tech"},
     {"name": "量子位",     "url": "https://www.qbitai.com/feed",              "lang": "zh", "category": "tech"},
-    {"name": "新智元",     "url": "https://www.xinzhi.com/rss",               "lang": "zh", "category": "tech"},
     {"name": "36氪",       "url": "https://36kr.com/feed",                    "lang": "zh", "category": "biz"},
     {"name": "钛媒体",     "url": "https://www.tmtpost.com/feed",             "lang": "zh", "category": "biz"},
 
@@ -13,11 +11,13 @@ RSS_SOURCES = [
     {"name": "Towards Data Science",  "url": "https://towardsdatascience.com/feed",  "lang": "en", "category": "tech"},
 
     # [media] 英文技术媒体
-    {"name": "TechCrunch",         "url": "https://techcrunch.com/feed/",                              "lang": "en", "category": "biz"},
+    # {"name": "TechCrunch",         "url": "https://techcrunch.com/feed/",                              "lang": "en", "category": "biz"},
     {"name": "TechCrunch Venture", "url": "https://techcrunch.com/category/venture/feed/",             "lang": "en", "category": "funding"},
+    {"name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/",             "lang": "en", "category": "tech"},
     {"name": "VentureBeat",        "url": "https://venturebeat.com/feed/",                             "lang": "en", "category": "tech"},
     {"name": "Wired AI",           "url": "https://www.wired.com/feed/tag/artificial-intelligence/rss","lang": "en", "category": "tech"},
     {"name": "Ars Technica AI",    "url": "https://feeds.arstechnica.com/arstechnica/index",           "lang": "en", "category": "tech"},
+    {"name": "HN Buzzing",       "url": "https://hn.buzzing.cc/feed.xml",             "lang": "zh", "category": "tech"}, # 这个每天更新很多, 已经是聚合网站了
     {"name": "The Information",    "url": "https://www.theinformation.com/feed",                       "lang": "en", "category": "biz"},
     {"name": "Inc.com",            "url": "https://www.inc.com/rss",                                   "lang": "en", "category": "biz"},
     {"name": "Entrepreneur",       "url": "https://www.entrepreneur.com/latest.rss",                   "lang": "en", "category": "biz"},
@@ -33,6 +33,7 @@ RSS_SOURCES = [
     {"name": "Meta AI Blog",     "url": "https://ai.meta.com/blog/rss/",          "lang": "en", "category": "model"},
     {"name": "xAI Blog",         "url": "https://x.ai/blog/rss.xml",              "lang": "en", "category": "model"},
     {"name": "Mistral Blog",     "url": "https://mistral.ai/news/rss",            "lang": "en", "category": "model"},
+    {"name": "Qwen Blog",        "url": "https://qwenlm.github.io/blog/index.xml","lang": "en", "category": "model"},
     
     # [research] 研究机构 - RSS较少，先放几个代表性的，后续可以补充
     {"name": "OpenAI Research",        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_openai_research.xml",      "lang": "en", "category": "research"},
@@ -67,7 +68,7 @@ RSS_SOURCES = [
     {"name": "Wojciech Zaremba", "url": "https://medium.com/@woj.zaremba/feed",       "lang": "en", "category": "opinion"},
     {"name": "Stefan Pieterse",  "url": "https://steipete.me/rss.xml",                "lang": "en", "category": "opinion"},
     {"name": "Sam Altman Blog",  "url": "http://blog.samaltman.com/posts.atom",        "lang": "en", "category": "opinion"},
-    {"name": "HN Buzzing",       "url": "https://hn.buzzing.cc/feed.xml",             "lang": "zh", "category": "opinion"},
+
     {"name": "AI Hub Today",     "url": "https://ai.hubtoday.app/blog/index.xml",     "lang": "zh", "category": "opinion"},
 
     # [opinion] 播客
@@ -109,15 +110,10 @@ RSS_SOURCES = [
 
 SCRAPE_SOURCES = [ # 很多产品主页，而拿不到blog; 时间窗口无法确认
     # [model] 无 RSS
-    # {"name": "DeepSeek Blog",     "url": "https://www.deepseek.com/news",          "category": "model"}, # 这个很关键，没有
-    # {"name": "阶跃星辰",          "url": "https://www.stepfun.com/news",           "category": "model"},
-    # {"name": "智谱AI Blog",       "url": "https://www.zhipuai.cn/news",            "category": "model"},  # 时间暂时识别不到
-    # {"name": "MiniMax Blog",      "url": "https://www.minimaxi.com/news",          "category": "model"},    # 时间暂时识别不到
-    {"name": "Moonshot Kimi",     "url": "https://www.moonshot.cn/news",           "category": "model"},
+
     # {"name": "Hunyuan",           "url": "https://hunyuan.tencent.com/blog",       "category": "model"},  # 产品主页，无文章列表
-    # {"name": "Qwen Blog",         "url": "https://qwen.ai/research",          "category": "model"}, # js渲染 - 后续可以添加
+
     {"name": "Seed ByteDance",    "url": "https://seed.bytedance.com/en/blog",     "category": "model"},
-    # {"name": "快手技术",          "url": "https://www.kuaishou.com/about/news",    "category": "model"},  # delete
     {"name": "Black Forest Labs", "url": "https://bfl.ai/blog",                    "category": "model"},
 
     # [creative] 创意 AI 工具（无 RSS）
@@ -183,7 +179,16 @@ TWITTER_ACCOUNTS = {
 
 
 WECHAT_ACCOUNTS = [
-    {"name": "海外独角兽", "biz": "Mzg2OTY0MDk0NQ=="},
-    {"name": "语言即世界", "biz": "MzE5ODg1MTY4Mw=="},
+    {"name": "机器之心",   "biz": "MzA3MzI4MjgzMw==", "category": "tech"},
+    {"name": "新智元",     "biz": "MzI3MTA0MTk1MA==", "category": "tech"},
+
+    {"name": "DeepSeek",  "biz": "Mzk0OTYwNzc3NQ==",  "category": "model"},
+    {"name": "智谱AI",    "biz": "MzkyMzI3NzQ0Mg==",   "category": "model"},
+    {"name": "MiniMax",   "biz": "MzE5MTA3NzcxMQ==",   "category": "model"},
+    {"name": "Kimi",      "biz": "Mzk0NDU1MDkyNg==",   "category": "model"},
+    {"name": "阶跃星辰",    "biz": "MzkyNTYxNzg5Mg==",   "category": "model"},
+
+    {"name": "海外独角兽", "biz": "Mzg2OTY0MDk0NQ==", "category": "news"},
+    {"name": "语言即世界", "biz": "MzE5ODg1MTY4Mw==", "category": "news"},
 ]
 

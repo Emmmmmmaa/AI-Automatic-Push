@@ -6,3 +6,4 @@ logs/
 test_twitter.py
 debug_items.json
 sources_v2.csv
+tmp/
