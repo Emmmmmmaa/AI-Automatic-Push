@@ -15,6 +15,7 @@ import os
 import sys
 import json
 import requests
+import anthropic
 from pathlib import Path
 try:
     from process.read_bitable import (
@@ -75,6 +76,40 @@ def _group_records(records: list[dict], use_category_map: bool = False) -> dict:
     return grouped
 
 
+def _dedup_by_claude(items: list[dict], top_n: int = 5) -> list[dict]:
+    """Use Claude to semantically deduplicate news items and return top_n unique events."""
+    if len(items) <= 1:
+        return items
+
+    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+
+    n = len(items)
+    numbered = "\n".join(
+        f"{i+1}. {item['title']}" for i, item in enumerate(items)
+    )
+    prompt = (
+        f"以下共 {n} 条新闻标题（编号 1-{n}），其中可能有多条报道同一事件。\n"
+        "去重规则：只要涉及同一产品、同一公司行为、或同一事件，无论角度或侧重点不同，都视为重复，每组只保留信息最完整的一条。\n"
+        "请输出去重后保留的所有编号，按原顺序排列，用逗号分隔。\n"
+        f"只输出数字编号（1-{n} 之间），不要输出其他任何内容。\n\n"
+        f"{numbered}"
+    )
+
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=128,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    raw = resp.content[0].text.strip()
+    try:
+        indices = [int(x.strip()) - 1 for x in raw.split(",") if x.strip().isdigit()]
+        indices = [i for i in indices if 0 <= i < n]
+    except Exception:
+        indices = list(range(n))
+
+    return [items[i] for i in indices][:top_n]
+
+
 def build_combined_variables(token: str = None) -> dict:
     """Merge AI news + policy news into one template_variable dict."""
     if token is None:
@@ -89,7 +124,8 @@ def build_combined_variables(token: str = None) -> dict:
 
     deduped = {}
     for key, items in merged.items():
-        seen_urls = set()
+        # url dedup first, then sort by importance
+        seen_urls: set[str] = set()
         unique = []
         for item in items:
             url = item.get("url", "")
@@ -97,7 +133,8 @@ def build_combined_variables(token: str = None) -> dict:
                 continue
             seen_urls.add(url)
             unique.append(item)
-        deduped[key] = sorted(unique, key=lambda x: x.get("importance", 0), reverse=True)[:5]
+        sorted_items = sorted(unique, key=lambda x: x.get("importance", 0), reverse=True)
+        deduped[key] = _dedup_by_claude(sorted_items)
     return deduped
 
 

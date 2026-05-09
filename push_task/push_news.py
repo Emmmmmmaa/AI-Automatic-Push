@@ -309,10 +309,13 @@ def fetch_twitter(since: datetime) -> list[dict]:
             for tweet in tweets:
                 clean_text = re.sub(r'https://t\.co/\S+', '', tweet["text"]).strip()
                 url = f"https://x.com/{username}/status/{tweet['id']}"
+                parts = clean_text.split("\n", 1)
+                title = parts[0].strip()[:100]
+                summary = parts[1].strip() if len(parts) > 1 else ""
                 items.append({
-                    "title":       clean_text[:100],
+                    "title":       title,
                     "url":         url,
-                    "summary":     clean_text,
+                    "summary":     summary,
                     "source":      display_name,
                     "category_hardcode":    category,
                     "pub_time":    tweet.get("created_at", "")[:16].replace("T", " "),

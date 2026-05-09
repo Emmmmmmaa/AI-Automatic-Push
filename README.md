@@ -15,11 +15,11 @@
 
 | 脚本 | 内容 | 触发时间 |
 |---|---|---|
-| `push_task/push_news.py` | AI 资讯 | 每天 08:30 |
-| `push_task/push_policy.py` | 政策新闻 | 每天 08:30 |
-| `process/feishu_card_news_and_policy.py` | 早报卡片推送 | 每天 09:00 |
-| `push_task/push_market.py` | 行业指数 + IR 新闻 + 个股新闻 | 每天 20:30 |
-| `process/feishu_card_market.py` | 晚报卡片推送 | 每天 21:00 |
+| `push_task/push_news.py` | AI 资讯采集 | 每天 20:30 |
+| `push_task/push_policy.py` | 政策新闻采集 | 每天 20:30 |
+| `push_task/push_market.py` | 行业指数 + IR 新闻 + 个股新闻采集 | 每天 20:30 |
+| `process/feishu_card_news_and_policy.py` | 资讯 + 政策卡片推送 | 每天 21:00 |
+| `process/feishu_card_market.py` | 市场数据卡片推送 | 每天 21:00 |
 
 定时任务通过 macOS LaunchAgents 调度，日志写入 `logs/`。
 

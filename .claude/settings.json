@@ -8,7 +8,25 @@
       "Bash(/opt/miniconda3/envs/lovart-feishu-push/bin/python3 -c \"import yfinance, requests, dotenv; print\\('deps OK'\\)\")",
       "Bash(launchctl unload *)",
       "Bash(systemsetup -gettimezone)",
-      "Bash(python3 push_market.py)"
+      "Bash(python3 push_market.py)",
+      "Bash(/opt/miniconda3/envs/lovart-feishu-push/bin/python3 -c \"import anthropic; print\\('ok'\\)\")",
+      "Bash(/opt/miniconda3/envs/lovart-feishu-push/bin/python3 -c ' *)",
+      "Bash(conda run *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(rm /Users/ruyiyang/Documents/courseware/2026_Spring/other/lovart/AI-Automatic-Push/bot/bot_server.py)",
+      "Bash(rmdir /Users/ruyiyang/Documents/courseware/2026_Spring/other/lovart/AI-Automatic-Push/bot/)",
+      "Bash(curl -s -X POST https://www.feishu.cn/flow/api/trigger-webhook/799c1637117d456130c76a962773842b -H 'Content-Type: application/json' -d '{\"text\": \"test\"}')",
+      "Bash(curl -s -X POST https://www.feishu.cn/flow/api/trigger-webhook/c976cc8bcf14c51159787 -H 'Content-Type: application/json' -d '{\"text\": \"test\"}')",
+      "Bash(curl -s -X POST https://www.feishu.cn/flow/api/trigger-webhook/c976cc8bcf0e099dc0bdf14c51159787 -H 'Content-Type: application/json' -d '{\"text\": \"test\"}')",
+      "Bash(mkdir -p /Users/ruyiyang/Documents/courseware/2026_Spring/other/lovart/AI-Automatic-Push/bot)",
+      "Bash(python push_task/push_news.py)",
+      "Bash(python push_task/push_policy.py)",
+      "Bash(python push_task/push_market.py)",
+      "Bash(git -C /Users/ruyiyang/Documents/courseware/2026_Spring/other/lovart/AI-Automatic-Push diff --stat HEAD)",
+      "Bash(git -C /Users/ruyiyang/Documents/courseware/2026_Spring/other/lovart/AI-Automatic-Push status)"
+    ],
+    "additionalDirectories": [
+      "/Users/ruyiyang/Documents/courseware/2026_Spring/other/lovart/AI-Automatic-Push"
     ]
   }
 }
